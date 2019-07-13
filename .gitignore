@@ -61,7 +61,7 @@ typings/
 .next
 
 # config
-/config.json
+/config/keys_dev.js
 
 # misc
 .DS_Store
