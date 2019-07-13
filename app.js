@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 app.use('/messages', messagesRouter);
 app.use(express.static('client/build'));
-if (process.ENV.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
