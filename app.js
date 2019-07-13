@@ -5,14 +5,14 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
 
-const config = require('./config');
+const db = require('./config/keys').mongoURI;
 const messagesRouter = require('./routes/messages');
 
 const app = express();
 
 // connect to mongodb
 mongoose
-  .connect(config.mongo.uri, { useNewUrlParser: true })
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err.message));
 
