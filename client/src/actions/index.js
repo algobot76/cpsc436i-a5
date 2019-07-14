@@ -4,7 +4,7 @@ export function fetchMessages() {
   return dispatch => {
     dispatch(fetchMessagesBegin());
     return axios
-      .get('/all')
+      .get('/messages/all')
       .then(res => dispatch(fetchMessagesSuccess(res.data)))
       .catch(err => dispatch(fetchMessagesFailure(err.response.data)));
   };
@@ -32,7 +32,7 @@ export const addMessage = message => {
   return dispatch => {
     dispatch(addMessageBegin());
     return axios
-      .post('/new', { msg: message })
+      .post('/messages/new', { msg: message })
       .then(res => dispatch(addMessageSuccess(res.data)))
       .catch(err => dispatch(addMessageFailure(err.response.data)));
   };
@@ -60,7 +60,7 @@ export const removeMessage = id => {
   return dispatch => {
     dispatch(removeMessageBegin());
     return axios
-      .delete(`/remove/${id}`)
+      .delete(`/messages/remove/${id}`)
       .then(res => dispatch(removeMessageSuccess(res.data)))
       .catch(err => dispatch(removeMessageFailure(err.response.data)));
   };
@@ -88,7 +88,7 @@ export const clearAllMessages = () => {
   return dispatch => {
     dispatch(clearAllMessagesBegin());
     return axios
-      .delete('/destroy')
+      .delete('/messages/destroy')
       .then(() => dispatch(clearAllMessagesSuccess()))
       .catch(err => dispatch(clearAllMessagesFailure(err.response.data)));
   };
